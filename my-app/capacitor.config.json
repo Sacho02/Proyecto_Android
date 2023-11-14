@@ -1,0 +1,11 @@
+{
+  "appId": "my.app.com",
+  "appName": "Leo",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

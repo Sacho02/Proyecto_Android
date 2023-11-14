@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresarALogin()">
+        <ion-icon name="home" class= transparent-home></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Registro de Clase
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-card>
+    <div class="ion-padding">
+      <div>
+        <img *ngIf="imageSrc" [src]="imageSrc" alt="Imagen seleccionada" style="max-width: 50%; min-width: 70%">
+      </div>
+      <div>
+        <button (click)=takePhoto() class="ion-button ion-color-primary">Tomar Foto</button>
+      </div>
+    </div>
+
+    <ion-card-header>
+      Clase Registrada
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ qrData }}</p>
+    </ion-card-content>
+
+    <ion-card-header>
+      Datos del Alumno
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Nombre :</strong> {{ nombre }}</p>
+      <p><strong>Apellido :</strong> {{ apellido }}</p>
+      <p><strong>RUT :</strong> {{ rut }}</p>
+      <p><strong>Region :</strong>{{ region }} <p>
+      <p><strong>Comuna :</strong>{{ comuna }} <p>
+      <p>Latitud: {{ latitud }}</p>
+      <p>Longitud: {{ longitud }}</p>
+    </ion-card-content>
+
+      <ion-card-header>
+        TimeStamp
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ currentTimestamp }}</p>
+      </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="obtenerCoordenadasGPS()">Capturar Coordenadas GPS</ion-button>

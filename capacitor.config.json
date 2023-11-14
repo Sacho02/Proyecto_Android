@@ -1,0 +1,37 @@
+{
+  "appId": "duocapp.com",
+  "appName": "duocapp",
+  "webDir": "www",
+  "plugins": {
+    "Geolocation": {
+      "permissions": [
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "BarcodeScanner": {
+      "android": {
+        "package": "duocapp.com",
+        "permissions": [
+          "android.permission.CAMERA"
+        ]
+      }
+    }
+  },
+  "server": {
+    "androidScheme": "https"
+  },
+  "pwa": {
+    "cspHeaderName": "Content-Security-Policy",
+    "externalServer": {
+      "url": "http://localhost:8100",
+      "allowNavigation": [
+        "^/assets",
+        "^/public",
+        "^/static"
+      ],
+      "canRespondWithNoContent": [
+        "^/actions/"
+      ]
+    }
+  }
+}

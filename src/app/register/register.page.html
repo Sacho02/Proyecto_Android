@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-outline" class="transparent-arrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Registro
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Nombre</ion-label>
+    <ion-input [(ngModel)]="nombre" required minlength="4"></ion-input>
+  </ion-item>
+  <div *ngIf="nombre && nombre.length < 4" class="error-message">
+    El nombre debe tener al menos 4 caracteres.
+  </div>
+
+  <ion-item>
+    <ion-label>Apellido</ion-label>
+    <ion-input [(ngModel)]="apellido" required minlength="4"></ion-input>
+  </ion-item>
+  <div *ngIf="apellido && apellido.length < 4" class="error-message">
+    El apellido debe tener al menos 4 caracteres.
+  </div>
+
+  <ion-item>
+    <ion-label>RUT</ion-label>
+    <ion-input [(ngModel)]="rut" required pattern=".{9,12}"></ion-input>
+  </ion-item>
+  <div *ngIf="rut && (rut.length < 9 || rut.length > 12)" class="error-message">
+    El RUT debe tener entre 9 y 12 caracteres.
+  </div>
+
+  <ion-item>
+    <ion-label>Carrera</ion-label>
+    <ion-select [(ngModel)]="carrera">
+      <ion-select-option value="Ingeniería">Ingeniería</ion-select-option>
+      <ion-select-option value="Medicina">Medicina</ion-select-option>
+      <ion-select-option value="Derecho">Derecho</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+    <ion-item>
+      <ion-label>Región</ion-label>
+      <ion-select [(ngModel)]="NombreRegion" (ionChange)="onRegionChange()">
+        <ion-select-option value="0">Selecciona una región</ion-select-option>
+        <ion-select-option *ngFor="let region of region" [value]="region.nombre">{{ region.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Comuna</ion-label>
+      <ion-select [(ngModel)]="NombreComuna" (ionChange)="obtenerComunas()">
+        <ion-select-option value="0">Selecciona una comuna</ion-select-option>
+        <ion-select-option *ngFor="let comuna of comuna" [value]="comuna.nombre">{{ comuna.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+<!--   <ion-list>
+    <ion-item>
+      <ion-label>Región</ion-label>
+      <ion-select [(ngModel)]="RegionId" (ionChange)="obtenerComunas()">
+        <ion-select-option *ngFor="let region of region" [value]="region.id">{{ region.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Comuna</ion-label>
+      <ion-select [(ngModel)]="RegionId" (ionChange)="obtenerRegiones()">
+        <ion-select-option *ngFor="let comuna of comuna" [value]="comuna.id">{{ comuna.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
+
+    <ion-content>
+      <ion-item>
+        <ion-label>Usuario</ion-label>
+        <ion-input [(ngModel)]="usuario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Confirmar Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="repetirContrasena" required minlength="3"></ion-input>
+      </ion-item>
+      <div *ngIf="repetirContrasena && contrasena.length < 3" class="error-message">
+        La contraseña debe tener al menos 3 caracteres.
+      </div>
+
+    <ion-button expand="full" (click)="register()" [disabled]="!isValidForm()">Registrar</ion-button>
+  </ion-content>
+</ion-content>

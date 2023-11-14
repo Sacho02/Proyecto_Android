@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Inicio de Sesión
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-row *ngIf="errorMessage">
+  <ion-col>
+    <ion-alert color="danger" header="Error" message="{{ errorMessage }}"></ion-alert>
+  </ion-col>
+</ion-row>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Usuario</ion-label>
+    <ion-input [(ngModel)]="user"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+  <ion-button expand="full" (click)="goToRegister()">Registrarse</ion-button>
+  <ion-button expand="full" (click)="forgotPassword()">Recuperar Contraseña</ion-button>
+</ion-content>
